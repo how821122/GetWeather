@@ -1,5 +1,5 @@
 var request = require('request');
-
+var area = require("./label_area.js");
 //----------------------------------------------------------//
 //---------------整理每三個小時的數據-----------------------//
 //----------------------------------------------------------//
@@ -9,14 +9,14 @@ var request = require('request');
 function per3Hdata(DataArray,DayOfWeek,AfterXHour){
   
    var W ={
-     //  DayOfWeek  : DataArray[0][DayOfWeek],//日期要排序
-       time: DataArray[1][AfterXHour],
-       Tempure: DataArray[3][AfterXHour],
-       Tempure_feel: DataArray[4][AfterXHour],
-       wind_direction: DataArray[6][AfterXHour],
+       DayOfWeek:DataArray[0][DayOfWeek],//日期要排序
+       time:DataArray[1][AfterXHour],
+       Tempure:DataArray[3][AfterXHour],
+       Tempure_feel:DataArray[4][AfterXHour],
+       wind_direction:DataArray[6][AfterXHour],
        relative_humidity:DataArray[7][AfterXHour],
     // rain: DataArray[8][AfterXHour],//每六個小時才算一次
-       feeling: DataArray[9][AfterXHour],
+       feeling:DataArray[9][AfterXHour],
 
    }
    return W ;//回傳陣列形式
@@ -27,8 +27,10 @@ function print_total(Data_Sourse){
     var DayOfWeek=2;
     var W =[];
     var section =2;
+    
+
     for(section =2;section<=18;section++){
-     var X = per3Hdata(Data_Sourse,DayOfWeek,section).time.substring(1,6);
+     var X = per3Hdata(Data_Sourse,DayOfWeek,section).time.substring(1,6);//幾點，若是00:00--->日期+1
    //-------------------------------判斷是否換日  
      if(X==00){
       DayOfWeek=DayOfWeek+1;
