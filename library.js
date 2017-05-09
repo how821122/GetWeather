@@ -8,20 +8,20 @@ var area = require("./label_area.js");
 //After_2XHour==> "現在"標籤 =2,  經過 (X-2)*3小時
 function per3Hdata(DataArray,DayOfWeek,AfterXHour){
   
-   var W ={
-       DayOfWeek:DataArray[0][DayOfWeek],//日期要排序
-       time:DataArray[1][AfterXHour],
-       Tempure:DataArray[3][AfterXHour],
-       Tempure_feel:DataArray[4][AfterXHour],
-       wind_direction:DataArray[6][AfterXHour],
-       relative_humidity:DataArray[7][AfterXHour],
-    // rain: DataArray[8][AfterXHour],//每六個小時才算一次
-       feeling:DataArray[9][AfterXHour],
+   var Weather =new Object(); 
 
-   }
-   return W ;//回傳陣列形式
-}
+       Weather.DayOfWeek=DataArray[0][DayOfWeek];//日期要排序
+       Weather.time=DataArray[1][AfterXHour];
+       Weather.Tempure=DataArray[3][AfterXHour];
+       Weather.Tempure_feel=DataArray[4][AfterXHour];
+       Weather.wind_direction=DataArray[6][AfterXHour];
+       Weather.relative_humidity=DataArray[7][AfterXHour];
+       //Weather.rain=DataArray[8][AfterXHour],//每六個小時才算一次
+       Weather.feeling=DataArray[9][AfterXHour];
 
+       return Weather;
+ }
+//-----------------------------------------------------------------------------------------------------
 function print_total(Data_Sourse){
 
     var DayOfWeek=2;

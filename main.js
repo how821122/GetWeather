@@ -1,5 +1,6 @@
 var request = require('request');
 var cheerio = require('cheerio');
+var fs =require('fs');
 var library = require("./library.js");
 var area = require("./label_area.js");
 
