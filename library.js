@@ -22,28 +22,8 @@ function per3Hdata(DataArray,DayOfWeek,AfterXHour){
        return Weather;
  }
 //-----------------------------------------------------------------------------------------------------
-function print_total(Data_Sourse){
 
-    var DayOfWeek=2;
-    var W =[];
-    var section =2;
-    
-
-    for(section =2;section<=18;section++){
-     var X = per3Hdata(Data_Sourse,DayOfWeek,section).time.substring(1,6);//幾點，若是00:00--->日期+1
-   //-------------------------------判斷是否換日  
-     if(X==00){
-      DayOfWeek=DayOfWeek+1;
-      }
-    else{
-      DayOfWeek=DayOfWeek; 
-      }
-    //----------------------------
-     W[section-2] = per3Hdata(Data_Sourse,DayOfWeek,section);
-    }
-    return W ;//回傳一個陣列作為輸出
-}
-
+//--------------------------------------------------------------------------------------
 
 exports.per3Hdata = per3Hdata;
-exports.print_total = print_total;
+//exports.print_total = print_total;
