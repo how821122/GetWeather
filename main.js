@@ -2,31 +2,37 @@ var request = require('request');
 var cheerio = require('cheerio');
 var fs =require('fs');
 var library = require("./library.js");
-var area = require("./label_area.js");
+var Area = require("./label_area.js");
+ 
 
 
 
-var url = "http://www.cwb.gov.tw/V7/forecast/town368/3Hr/6301000.htm";//內湖
+var url =  "http://www.cwb.gov.tw/V7/forecast/town368/3Hr/"+6301100+".htm";
 
 request(url, function(err, res, body){
-    // 去跟中央氣象局的網站要資料
-   
-  var $ = cheerio.load(body);
-    // 把要到的資料放進 cheerio
 
-	var Data_Sourse = []
-    $('.Forecast-box tr').each(function(i, elem){
+    var $ = cheerio.load(body);
+//---Get Date & Time
+    var Data_Sourse = [];
+    $('.Forecast-box tr ').each(function(i, elem){
         Data_Sourse.push($(this).text().split('\n'));
     });
-     
+//----Get Weather
+    var Meteorology = [];
+    $('img').each(function(i, elem){
+        Meteorology.push($(this).attr('title'));
+    });
+//----Print data 
+    var area = Area.getArea(url);
+    var weather_data = library.preprocess_Data(Data_Sourse,Meteorology);
     
-    var district = area.Area(url);
+    var total_data = weather_data.concat(area);
 
-    var Weather_Data =library.print_total(Data_Sourse);
+    console.log(total_data);
 
-    console.log(district,Weather_Data);
+    //-----17:地區
 
-    fs.writeFileSync("result.json", JSON.stringify(Weather_Data,",",3));
-
+});
  
-})
+
+

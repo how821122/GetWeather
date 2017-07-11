@@ -1,5 +1,5 @@
  //---------------------------------
-function Area(url){
+function getArea(url){
 
 	
     var number = url.substring(46,53);//get the district code form url
@@ -56,4 +56,4 @@ function Area(url){
 }
 
 
-exports.Area = Area;
+exports.getArea = getArea;
