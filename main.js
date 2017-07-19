@@ -5,11 +5,13 @@ var GetDistrict = require("./label_area.js");
 var library = require("./library.js");
 
 var url = library.getURL();
+
  
+ //---start for first data
  for(var k=0;k<12;k++){ 
         loop(k,k*1000);
       }
- 
+ //---loop
 setInterval(function(){
        
   for(var k=0;k<12;k++){ 
@@ -20,16 +22,25 @@ setInterval(function(){
  
 
 //------------------------------------------------------------------
- 
+
 function loop(k,time){
-  setTimeout(function WW(){
-  Get(url[k]);
+
+  var url = library.getURL()//array
+  var area=[]
+  area[k] = GetDistrict.getArea(url[k]);//determine the area by url
+  
+  setTimeout(function Delayfunction(){
+ 
+  Get(url[k],area[k]);
+ 
  },time);
+
+  
 }
 
 
  //-------------------------------------------------------------------
-function Get(url){
+function Get(url,file_name){
 
    request(url, function(err, res, body){
 
@@ -49,12 +60,12 @@ function Get(url){
 
    var file = library.Convertjson(total_data);//json file
 
-   var jsonText = JSON.stringify(file[0]," "," ");
+   var jsonText = JSON.stringify(file[1]," "," ");//only first data
    console.log(jsonText);
   
  
-  fs.appendFile("result.json",jsonText);//持續寫入
-  //fs.writeFile("result.json","XX");//覆蓋寫入
+  fs.appendFile("./result/_result_"+file_name+".json",jsonText); //持續寫入
+  //fs.writeFile("./result/result.json",jsonText);//覆蓋寫入
   //
   //
   });
