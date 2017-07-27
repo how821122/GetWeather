@@ -1,0 +1,27 @@
+{
+  "name": "getweather",
+  "version": "1.0.0",
+  "description": "GetWeather",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/how821122/GetWeather.git"
+  },
+  "keywords": [
+    "weather"
+  ],
+  "author": "how821122",
+  "denpendencies":{
+    "request":"2.81.0",
+    "cheerio":"1.0.0-rc.2",
+    "fs":"0.0.1-security"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/how821122/GetWeather/issues"
+  },
+  "homepage": "https://github.com/how821122/GetWeather#readme"
+}
