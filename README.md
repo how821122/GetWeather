@@ -2,7 +2,7 @@
 GetWeather
 
 
-/*Test for Github*/
+ 
 
 Build a function to get city's weather
 
