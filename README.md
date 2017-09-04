@@ -8,7 +8,9 @@ Build a function to get city's weather
 
 1.
 
-<pre>npm install</pre>
+<pre>npm install cheerio</pre>
+<pre>npm install request</pre>
+<pre>npm install fs</pre>
 
 2.
 
