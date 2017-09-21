@@ -59,7 +59,7 @@ function Get(url,file_name){
 
    var file = library.Convertjson(total_data);//json file
 
-   var jsonText = JSON.stringify(file[1]," "," ");//only first data
+   var jsonText = JSON.stringify(file," "," ");//only first data
    console.log(jsonText);
   
  
